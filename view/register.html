@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 300px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      form {
+        margin-top: 20px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      input[type='submit'] {
+        background-color: #000;
+        color: #fff;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Register</h1>
+      <form action="/Register" method="post" id="form">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" />
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" />
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" />
+        <input type="submit" value="Login" />
+      </form>
+    </div>
+    <script>
+      const form = document.getElementById('form');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const inputs = form.querySelectorAll('input');
+        const values = {};
+        for (const input of inputs) values[input.name] = input.value;
+        const req = await fetch('http://localhost:8080/api/v1/user/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(values),
+        });
+        let data = await req.json();
+        if (data.status === 'success') {
+          window.localStorage.setItem('token', data.data.token);
+          window.location.assign('index.html');
+        }
+      });
+    </script>
+  </body>
+</html>

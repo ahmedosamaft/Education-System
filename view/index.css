@@ -1,0 +1,108 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #101418;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+
+.register-btn {
+  background-color: rgb(16, 164, 53);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(12, 114, 38);
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: rgb(144, 202, 249);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px,
+    rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+  transition: all 0.5s ease;
+}
+
+.register-btn:hover {
+  background-color: rgb(118, 165, 203);
+}
+.courses {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.courses h3 {
+  text-align: center;
+}
+
+.courses ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.courses li {
+  margin-bottom: 10px;
+}
+
+.course {
+  border-radius: 4px;
+  color: white;
+  margin: auto;
+  padding: 24px;
+  background-color: rgba(31, 38, 46, 0.3);
+  border: 1px solid rgba(218, 224, 231, 0.08);
+}
+
+.course h4 {
+  margin-top: 0;
+  margin: 0 0 8px 0;
+  font-weight: 700;
+}
+
+.course h5 {
+  margin-top: 0;
+  font-weight: 500;
+}
+
+.course p {
+  font-size: 14px;
+  font-weight: 300;
+  color: #e8e8e8;
+}
+
+.navbar {
+  background-color: #1a237e;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20px;
+} 
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.navbar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.navbar .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.navbar .dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.navbar .dropdown-content a:hover {
+  background-color: #ddd;
+}
