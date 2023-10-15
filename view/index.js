@@ -6,8 +6,8 @@ const cardText = (code, cname, description, doctor, isRegistered) => `
     <p>Doctor: ${doctor}</p>
     ${
       !isRegistered
-        ? `<button class="register-btn" value='register' onclick="getCode()">Register</button>`
-        : ''
+        ? `<button class="register-btn" value='register' onclick="enroll()">Register</button>`
+        : `<button class="register-btn" value='register' onclick="unenroll()">Unregister</button>`
     } 
   </div>
 `;
@@ -23,7 +23,7 @@ async function getRegisteredCourses() {
   return data.data.enrollments;
 }
 
-function getCode() {
+function enroll() {
   let code = event.target.parentElement.querySelector('#code').innerText;
   register('SPRING', code).catch((err) => console.log(err));
 }
@@ -42,6 +42,26 @@ async function register(Csemester, code) {
   });
   data = await data.json();
   console.log(data);
+  window.location.reload();
+}
+
+function unenroll() {
+  let code = event.target.parentElement.querySelector('#code').innerText;
+  unregister('SPRING', code).catch((err) => console.log(err));
+}
+
+async function unregister(Csemester, code) {
+  let data = await fetch('http://localhost:8080/api/v1/enroll/', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: 'Bearer ' + window.localStorage.getItem('token'),
+    },
+    body: JSON.stringify({
+      code,
+      semester: `${Csemester} ${year}`,
+    }),
+  });
   window.location.reload();
 }
 

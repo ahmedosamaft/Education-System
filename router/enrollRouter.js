@@ -1,25 +1,24 @@
-const router = require('express').Router();
-const authController = require('../controller/auth.controllers/auth.controller');
-const enrollController = require('../controller/enroll.controllers/enroll.controller');
+const router = require("express").Router();
+const authController = require("../controller/auth.controllers/auth.controller");
+const enrollController = require("../controller/enroll.controllers/enroll.controller");
 
 router
-  .route('/')
+  .route("/")
   .get(
     authController.protect,
-    authController.restrictedTo('student'),
+    authController.restrictedTo("student"),
     enrollController.findCourses
   )
-  .post(authController.protect, enrollController.enroll);
-  
+  .post(authController.protect, enrollController.enroll)
+  .delete(authController.protect, enrollController.unenroll);
 router
-  .route('/all')
+  .route("/all")
   .get(
     authController.protect,
-    authController.restrictedTo('doctor'),
+    authController.restrictedTo("doctor"),
     enrollController.findAllEnrollments
-);
-  
-router.route('/:sid').get(authController.protect, enrollController.findCourses);
+  );
 
+router.route("/:sid").get(authController.protect, enrollController.findCourses);
 
 module.exports = router;
