@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #101418;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: white;
 }
 
@@ -23,6 +23,11 @@ body {
 .register-btn:hover {
   background-color: rgb(118, 165, 203);
 }
+
+a {
+  cursor: pointer;
+}
+
 .courses {
   width: 1000px;
   margin: 0 auto;
@@ -79,7 +84,7 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 20px;
-} 
+}
 
 .navbar a {
   color: white;
